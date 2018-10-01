@@ -17,7 +17,6 @@ from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
 from apiclient import errors
-from apiclient import errors
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://mail.google.com/'
