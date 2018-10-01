@@ -12,21 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# [START gmail_quickstart]
 from __future__ import print_function
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
 from apiclient import errors
+from apiclient import errors
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://mail.google.com/'
-
-"""Get a list of Messages from the user's mailbox.
-"""
-
-from apiclient import errors
-
 
 def ListMessagesMatchingQuery(service, user_id, query=''):
   try:
@@ -55,9 +49,6 @@ def BatchDeleteMessageID(service, user_id, ids_list):
         print('An error occurred: %s' % error)
 
 def main():
-    """Shows basic usage of the Gmail API.
-    Lists the user's Gmail labels.
-    """
     store = file.Storage('token.json')
     creds = store.get()
     if not creds or creds.invalid:
@@ -65,7 +56,6 @@ def main():
         creds = tools.run_flow(flow, store)
     service = build('gmail', 'v1', http=creds.authorize(Http()))
 
-    # Call the Gmail API
     results = ListMessagesMatchingQuery(service, 'me', 'Java')
     print(len(results))
     ids = []
@@ -77,4 +67,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-# [END gmail_quickstart]
